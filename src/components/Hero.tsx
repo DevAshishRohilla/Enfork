@@ -43,7 +43,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="w-full lg:absolute lg:w-full xl:w-[120%] lg:-top-16 xl:-top-20 right-0"
+              className="w-full lg:absolute lg:w-full xl:w-[120%] lg:top-1/2 lg:-translate-y-1/2 right-0"
             >
               <img
                 src="./stack-images.webp"
