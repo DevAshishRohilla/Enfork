@@ -3,6 +3,10 @@ import AppButton from "@/components/common/AppButton";
 import { Link } from "react-router-dom";
 
 const OurVentures = () => {
+  const handleLetsTalkClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <section
       id="ventures"
@@ -46,7 +50,7 @@ const OurVentures = () => {
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                   {/* <AppButton label="Explore Now" /> */}
-                  <Link to="/contact-us">
+                  <Link to="/contact-us" onClick={handleLetsTalkClick}>
                     <AppButton label="Let's Talk" isBlack={true} />
                   </Link>
                 </div>
@@ -135,7 +139,7 @@ const OurVentures = () => {
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                   {/* <AppButton label="Explore Now" /> */}
-                  <Link to="/contact-us">
+                  <Link to="/contact-us" onClick={handleLetsTalkClick}>
                     <AppButton label="Let's Talk" isBlack={true} />
                   </Link>
                 </div>
@@ -166,7 +170,7 @@ const OurVentures = () => {
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                   {/* <AppButton label="Explore Now" /> */}
-                  <Link to="/contact-us">
+                  <Link to="/contact-us" onClick={handleLetsTalkClick}>
                     <AppButton label="Let's Talk" isBlack={true} />
                   </Link>
                 </div>
