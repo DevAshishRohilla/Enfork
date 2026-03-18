@@ -38,17 +38,17 @@ const Hero = () => {
           </motion.div>
 
           {/* ===== Right Image Composition ===== */}
-          <div className="relative flex justify-center mt-6 sm:mt-8 lg:mt-0 h-48 md:h-80 lg:h-[500px] xl:h-[580px]">
+          <div className="relative flex justify-center lg:h-[500px] xl:h-[580px]">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="absolute w-[130%] md:w-[110%] lg:w-full xl:w-[120%] -top-4 lg:-top-16 xl:-top-20 right-0"
+              className="w-full lg:absolute lg:w-full xl:w-[120%] lg:-top-16 xl:-top-20 right-0"
             >
               <img
                 src="./stack-images.webp"
                 alt="Creative Marketing"
-                className="w-full h-full object-contain"
+                className="w-full h-auto object-contain"
               />
             </motion.div>
           </div>
