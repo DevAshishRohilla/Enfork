@@ -47,9 +47,9 @@ const Hero = () => {
               className=" absolute w-[150%] md:w-[100%] -top-12 xl:w-[200%]  lg:-right-[70%] lg:-top-[300px]"
             >
               <img
-                src="./hero section images/herosec-img.webp"
+                src="./stack-images.webp"
                 alt="Creative Marketing"
-                className="w-500px"
+                className="max-w-500px"
               />
             </motion.div>
           </div>

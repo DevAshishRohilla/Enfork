@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import AppButton from "@/components/common/AppButton";
+import { Link } from "react-router-dom";
 
 const OurVentures = () => {
   return (
@@ -44,8 +45,10 @@ const OurVentures = () => {
 
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-                  <AppButton label="Explore Now" />
-                  <AppButton label="Let's Talk" isBlack={true} />
+                  {/* <AppButton label="Explore Now" /> */}
+                  <Link to="/contact-us">
+                    <AppButton label="Let's Talk" isBlack={true} />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -131,8 +134,10 @@ const OurVentures = () => {
 
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-                  <AppButton label="Explore Now" isBlack={true} />
-                  <AppButton label="Let's Talk" />
+                  {/* <AppButton label="Explore Now" /> */}
+                  <Link to="/contact-us">
+                    <AppButton label="Let's Talk" isBlack={true} />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -160,8 +165,10 @@ const OurVentures = () => {
 
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-                  <AppButton label="Explore Now" />
-                  <AppButton label="Get In Touch" isBlack={true} />
+                  {/* <AppButton label="Explore Now" /> */}
+                  <Link to="/contact-us">
+                    <AppButton label="Let's Talk" isBlack={true} />
+                  </Link>
                 </div>
               </div>
             </div>

@@ -9,7 +9,7 @@ const industries = [
     title: "Healthcare",
     description:
       "Delivering innovative healthcare solutions that improve patient outcomes, streamline operations, and support digital transformation across healthcare organizations.",
-    image: "./Core industries section/2.webp",
+    image: "./Core industries section/7.webp",
     backContent: {
       title: "Healthcare",
       points: [
@@ -40,7 +40,7 @@ const industries = [
     title: "Media & Entertainment",
     description:
       "Empowering media brands with creative strategy, production expertise, and digital solutions to enhance engagement and drive growth.",
-    image: "./Core industries section/4.webp",
+    image: "./Core industries section/2.webp",
     backContent: {
       title: "Media & Entertainment",
       points: [
@@ -55,7 +55,7 @@ const industries = [
     title: "Networking",
     description:
       "Your brand is the story people share about you when you're not in the room.",
-    image: "./Core industries section/7.webp",
+    image: "./Core industries section/5.webp",
     backContent: {
       title: "Networking",
       points: [

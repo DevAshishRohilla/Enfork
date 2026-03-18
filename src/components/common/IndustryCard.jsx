@@ -2,9 +2,12 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, X } from "lucide-react";
 
+const CARD_HEIGHT = 600;
+
 const IndustryCard = ({ industry, index }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [hasBg, setHasBg] = useState(true);
+
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
   };
@@ -16,6 +19,7 @@ const IndustryCard = ({ industry, index }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
       className="flex flex-col justify-between group relative"
+      style={{ height: CARD_HEIGHT }}
     >
       <motion.div
         className="relative w-full"
@@ -23,19 +27,24 @@ const IndustryCard = ({ industry, index }) => {
         transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
         style={{
           transformStyle: "preserve-3d",
+          height: CARD_HEIGHT,
         }}
       >
-        {/* Frontsdie */}
+        {/* Front side */}
         <div
-          className="backface-hidden    p-6 md:p-4 rounded-2xl industry-card-height "
+          className="backface-hidden p-6 md:p-4 rounded-2xl industry-card-height"
           onMouseEnter={() => setHasBg(false)}
           onMouseLeave={() => setHasBg(true)}
           style={{
             backfaceVisibility: "hidden",
             backgroundSize: "110%",
-             background: hasBg
+            background: hasBg
               ? "url('./Core industries section/card bg.png') center"
-              : "#1b1b1b", // plain background on hover
+              : "#1b1b1b",
+            height: CARD_HEIGHT,
+            // ✅ Make front card a flex column
+            display: "flex",
+            flexDirection: "column",
           }}
         >
           {/* Card Header */}
@@ -52,14 +61,24 @@ const IndustryCard = ({ industry, index }) => {
             </button>
           </div>
 
-          <div>
+          {/* ✅ This div grows to fill space, pushing image to bottom */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              flex: 1,
+            }}
+          >
             {/* Description */}
             <p className="text-foreground font-light leading-relaxed mb-6 mt-20">
               {industry.description}
             </p>
 
-            {/* Image */}
-            <div className="relative w-full h-[200px]   rounded-xl overflow-hidden">
+            {/* ✅ Image pinned to bottom with mt-auto */}
+            <div
+              className="relative w-full h-[200px] rounded-xl overflow-hidden"
+              style={{ marginTop: "auto" }}
+            >
               <img
                 src={industry.image}
                 alt={industry.title}
@@ -69,20 +88,21 @@ const IndustryCard = ({ industry, index }) => {
           </div>
         </div>
 
-        {/* backside */}
+        {/* Back side */}
         <div
-          className="absolute inset-0 backface-hidden  p-6 md:p-4
-                           backdrop-blur-[12px] shadow-[0_4px_30px_rgba(0,0,0,0.3)]
-                           hover:border-white/50 hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)]
-                           transition-all duration-300 h-[600px] rounded-2xl overflow-hidden  bg-center"
+          className="absolute inset-0 backface-hidden p-6 md:p-4
+                     backdrop-blur-[12px] shadow-[0_4px_30px_rgba(0,0,0,0.3)]
+                     hover:border-white/50 hover:shadow-[0_8px_40px_rgba(0,0,0,0.4)]
+                     transition-all duration-300 rounded-2xl overflow-hidden bg-center"
           style={{
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
             backgroundImage: "url('./Core industries section/back bg.png')",
+            height: CARD_HEIGHT,
           }}
         >
           <div className="flex flex-col group relative">
-            {/* ===== Back Header ===== */}
+            {/* Back Header */}
             <div className="flex items-start justify-between mb-6">
               <h3 className="text-foreground font-light leading-snug pr-2">
                 {industry.backContent?.title || "Learn More"}
@@ -96,7 +116,7 @@ const IndustryCard = ({ industry, index }) => {
               </button>
             </div>
 
-            {/* ===== Back Content ===== */}
+            {/* Back Content */}
             <div className="flex flex-col space-y-4">
               {industry.backContent?.points.map((point, idx) => (
                 <motion.div
@@ -119,4 +139,5 @@ const IndustryCard = ({ industry, index }) => {
     </motion.div>
   );
 };
+
 export default IndustryCard;
