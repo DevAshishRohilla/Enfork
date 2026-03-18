@@ -30,7 +30,7 @@ async function sendEmail(
         Authorization: `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "Contact Form <onboarding@resend.dev>",
+        from: "Contact Form <noreply@enforkgroup.com>",
         to: process.env.ADMIN_EMAIL || "admin@enfork.com",
         reply_to: email,
         subject: `New Contact Form Submission from ${firstName} ${lastName}`,
