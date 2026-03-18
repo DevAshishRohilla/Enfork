@@ -12,7 +12,7 @@ const Hero = () => {
     >
       <div className="section-container mt-24 xl:mt-32">
         {/* ===== Content Wrapper (Equal Padding) ===== */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 items-center gap-8 sm:gap-10 lg:gap-12">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 items-center gap-8 sm:gap-10 lg:gap-12 lg:min-h-[60vh]">
           {/* ===== Left Column ===== */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -38,12 +38,12 @@ const Hero = () => {
           </motion.div>
 
           {/* ===== Right Image Composition ===== */}
-          <div className="relative flex justify-center lg:h-[500px] xl:h-[580px]">
+          <div className="flex items-center justify-center h-full">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="w-full lg:absolute lg:w-full xl:w-[120%] lg:top-1/2 lg:-translate-y-1/2 right-0"
+              className="w-full xl:w-[120%]"
             >
               <img
                 src="./stack-images.webp"
