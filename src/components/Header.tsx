@@ -2,13 +2,24 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import AppButton from "@/components/common/AppButton";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("home");
+  const location = useLocation();
 
   useEffect(() => {
+    const path = location.pathname;
+    if (path === "/contact-us") {
+      setActiveLink("contact-us");
+      return;
+    }
+    if (path === "/ventures") {
+      setActiveLink("ventures");
+      return;
+    }
+
     const sections = document.querySelectorAll("section[id]");
     const observer = new IntersectionObserver(
       (entries) => {
@@ -23,7 +34,7 @@ const Header = () => {
 
     sections.forEach((section) => observer.observe(section));
     return () => sections.forEach((section) => observer.unobserve(section));
-  }, []);
+  }, [location.pathname]);
 
   const navLinks = [
     { id: "home", label: "Home", href: "/" },
