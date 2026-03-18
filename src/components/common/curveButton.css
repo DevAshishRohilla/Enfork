@@ -1,0 +1,44 @@
+.curve-button {
+  height: 80px;
+  width: 150px;
+  background-color: transparent;
+  position: relative;
+}
+.container {
+  width: 100%;
+  height: 70px;
+  top: 30px;
+  /* background: linear-gradient(to bottom right, #bbbbbb 5%, #1b1b1b); */
+  z-index: 5;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 20px;
+}
+.div2 {
+  /* background-color: black; */
+  height: 50px;
+  width: 50px;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+.div3 {
+  background-color: transparent;
+  transform: rotate(180deg);
+  height: 50px;
+  width: 50px;
+  top: 10px;
+  right: 0px;
+  position: absolute;
+
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+}
+.div4 {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  clip-path: path("M0 0 Q0,30 30,30 L 0 30 Z");
+  right: -49px;
+  top: 60px;
+  /* background-color: black; */
+}
