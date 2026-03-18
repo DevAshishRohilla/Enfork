@@ -8,8 +8,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      // className="relative min-h-[100vh] overflow-hidden   lg:pt-12 bg-cover bg-center bg-no-repeat"
-      // style={{ backgroundImage: "url('./Hero background.png')" }}
+      className="overflow-hidden"
     >
       <div className="section-container mt-24 xl:mt-32">
         {/* ===== Content Wrapper (Equal Padding) ===== */}
@@ -39,17 +38,17 @@ const Hero = () => {
           </motion.div>
 
           {/* ===== Right Image Composition ===== */}
-          <div className="relative flex justify-center mt-6 sm:mt-8 lg:mt-12   h-32 md:h-80 lg:h-auto ">
+          <div className="relative flex justify-center mt-6 sm:mt-8 lg:mt-0 h-48 md:h-80 lg:h-[500px] xl:h-[580px]">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className=" absolute w-[150%] md:w-[100%] -top-12 xl:w-[200%]  lg:-right-[70%] lg:-top-[300px]"
+              className="absolute w-[130%] md:w-[110%] lg:w-full xl:w-[120%] -top-4 lg:-top-16 xl:-top-20 right-0"
             >
               <img
                 src="./stack-images.webp"
                 alt="Creative Marketing"
-                className="max-w-500px"
+                className="w-full h-full object-contain"
               />
             </motion.div>
           </div>
