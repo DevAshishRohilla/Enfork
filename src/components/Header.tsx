@@ -81,8 +81,8 @@ const Header = () => {
 
         {/* Desktop Button */}
         <div className="hidden lg:flex items-center gap-3 z-50">
-          <Link to="tel:+1800363675">
-            <AppButton label="+1800 ENFORK" isBlack={true} />
+          <Link to="tel:1800363675">
+            <AppButton label="1800 ENFORK" isBlack={true} />
           </Link>
         </div>
 

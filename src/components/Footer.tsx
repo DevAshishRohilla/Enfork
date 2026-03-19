@@ -1,6 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus("submitting");
+    try {
+      if (import.meta.env.DEV) {
+        const { error } = await supabase
+          .from("newsletter_subscriptions")
+          .insert([{ email }]);
+
+        if (error) {
+          console.error("Supabase error:", error);
+          setStatus("error");
+        } else {
+          setStatus("success");
+          setEmail("");
+        }
+      } else {
+        const response = await fetch("/api/newsletter", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+
+        if (response.ok) {
+          setStatus("success");
+          setEmail("");
+        } else {
+          console.error("Newsletter error:", await response.json());
+          setStatus("error");
+        }
+      }
+    } catch (err) {
+      console.error("Newsletter subscription error:", err);
+      setStatus("error");
+    }
+  };
+
   return (
     <footer
       className="relative text-white border-t border-white/10 bg-cover bg-center bg-no-repeat"
@@ -20,30 +63,41 @@ const Footer = () => {
               Get the latest inspiration & insights
             </h6>
 
-            <div className="flex items-center py-[0.5px] pr-[0.5px] w-full max-w-md rounded-full overflow-hidden bg-white shadow-sm mt-6 lg:mt-8">
-              {/* Input field */}
+            <form
+              onSubmit={handleSubscribe}
+              className="flex items-center py-[0.5px] pr-[0.5px] w-full max-w-md rounded-full overflow-hidden bg-white shadow-sm mt-6 lg:mt-8"
+            >
               <input
                 type="email"
-                placeholder="Enter Your Email For latest updates"
-                className="flex-1 px-3 sm:px-5 py-2 
-        text-[0.875rem] sm:text-[1rem] lg:text-[1.125rem]
- font-light text-gray-600 placeholder-gray-400 bg-transparent outline-none w-1/2"
+                placeholder="Subscribe to newsletter"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={status === "submitting"}
+                className="flex-1 px-3 sm:px-5 py-2 text-[0.65rem] sm:text-xs font-light text-gray-600 placeholder-gray-400 bg-transparent outline-none w-1/2"
               />
-
-              {/* Subscribe Button */}
               <button
-                className="px-4 sm:px-6 py-2  bg-[#757575] text-white font-semibold 
+                type="submit"
+                disabled={status === "submitting"}
+                className="px-4 sm:px-6 py-2 bg-[#757575] text-white font-semibold
         text-[0.875rem] sm:text-[1rem] lg:text-[1.125rem]
- rounded-full 
-               hover:bg-[#666666] transition-all duration-300 whitespace-nowrap"
+ rounded-full hover:bg-[#666666] transition-all duration-300 whitespace-nowrap disabled:opacity-60"
               >
-                Subscribe
+                {status === "submitting" ? "..." : "Subscribe"}
               </button>
-            </div>
+            </form>
 
-            <p className="text-gray-500 text-xs mt-6 lg:mt-8">
-              © 2025 Enfork. All Rights Reserved.
-            </p>
+            {status === "success" && (
+              <p className="text-green-400 text-sm mt-2">
+                Subscribed successfully!
+              </p>
+            )}
+            {status === "error" && (
+              <p className="text-red-400 text-sm mt-2">
+                Something went wrong. Please try again.
+              </p>
+            )}
+
           </div>
 
           <div className="flex flex-col sm:flex-row gap-8 sm:gap-12 lg:gap-16">
@@ -78,7 +132,7 @@ const Footer = () => {
                     href="ventures"
                     className="hover:text-white transition-all font-light"
                   >
-                    Our Brands
+                    Our Ventures
                   </a>
                 </li>
                 <li>
@@ -108,7 +162,7 @@ const Footer = () => {
                     src="./footer icons/Icon_19_.svg"
                     alt="mail"
                   />
-                  <span className="break-all">info@enfork.com.au</span>
+                  <span className="break-all">Info@enforkgroup.com</span>
                 </div>
                 <div className="flex items-center gap-3 text-foreground text-xs sm:text-sm">
                   <img
@@ -124,7 +178,7 @@ const Footer = () => {
                     src="./footer icons/Group 1000004278.svg"
                     alt="phone"
                   />
-                  <a href="tel:+1800363675">+1800363675</a>
+                  <a href="tel:+1800363675">1800 ENFORK</a>
                 </div>
               </div>
             </div>
@@ -132,7 +186,10 @@ const Footer = () => {
         </div>
 
         {/* ====== Bottom Row: Social Media ====== */}
-        <div className="flex justify-center lg:justify-end pb-6">
+        <div className="flex justify-center md:justify-between pb-6">
+          <p className="text-gray-500 text-xs mt-6 lg:mt-8">
+            © 2025 Enfork. All Rights Reserved.
+          </p>
           <div className="flex items-center gap-4 text-gray-400 text-sm">
             <span className="text-p text-foreground">Follow us on.</span>
             <a href="#" className="hover:text-white transition-all">

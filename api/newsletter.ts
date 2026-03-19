@@ -11,12 +11,7 @@ if (!supabaseUrl || !supabaseServiceKey) {
 
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-async function sendEmail(
-  email: string,
-  firstName: string,
-  lastName: string,
-  message: string
-) {
+async function sendNotification(email: string) {
   if (!resendApiKey) {
     console.error("⚠️  RESEND_API_KEY not configured - email notifications disabled");
     console.error("   To fix: Add RESEND_API_KEY to Vercel environment variables");
@@ -24,13 +19,13 @@ async function sendEmail(
   }
 
   if (!process.env.ADMIN_EMAIL) {
-    console.error("⚠️  ADMIN_EMAIL not configured - contact email won't be sent");
+    console.error("⚠️  ADMIN_EMAIL not configured - newsletter email won't be sent");
     console.error("   To fix: Add ADMIN_EMAIL to Vercel environment variables");
     return;
   }
 
   try {
-    const fromEmail = process.env.RESEND_FROM_EMAIL || "Contact Form <onboarding@resend.dev>";
+    const fromEmail = process.env.RESEND_FROM_EMAIL || "Newsletter <onboarding@resend.dev>";
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -40,23 +35,15 @@ async function sendEmail(
       body: JSON.stringify({
         from: fromEmail,
         to: process.env.ADMIN_EMAIL,
-        reply_to: email,
-        subject: `New Contact Form Submission from ${firstName} ${lastName}`,
+        subject: "New Newsletter Subscription",
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #333;">New Contact Form Submission</h2>
-            
+            <h2 style="color: #333;">New Newsletter Subscriber</h2>
             <div style="background-color: #f5f5f5; padding: 15px; border-radius: 8px; margin: 20px 0;">
-              <p><strong>Name:</strong> ${firstName} ${lastName}</p>
               <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-              <p><strong>Message:</strong></p>
-              <p style="background-color: white; padding: 10px; border-left: 4px solid #007bff;">
-                ${message.replace(/\n/g, "<br>")}
-              </p>
             </div>
-            
             <p style="color: #666; font-size: 12px;">
-              This email was sent from your Enfork contact form.
+              This notification was sent from your Enfork newsletter form.
             </p>
           </div>
         `,
@@ -69,14 +56,13 @@ async function sendEmail(
       throw new Error(`Resend failed: ${JSON.stringify(error)}`);
     }
     
-    console.log("✅ Contact form email sent successfully to", process.env.ADMIN_EMAIL);
+    console.log("✅ Newsletter notification sent successfully to", process.env.ADMIN_EMAIL);
   } catch (error) {
     console.error("❌ Email sending error:", error);
   }
 }
 
 export default async (req: VercelRequest, res: VercelResponse) => {
-  // Enable CORS
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,PATCH,DELETE,POST,PUT");
@@ -92,43 +78,29 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   }
 
   try {
-    const { firstName, lastName, email, message } = req.body;
+    const { email } = req.body;
 
-    // Validate input
-    if (!firstName || !lastName || !email || !message) {
-      return res.status(400).json({ error: "Missing required fields" });
+    if (!email) {
+      return res.status(400).json({ error: "Email is required" });
     }
 
-    // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return res.status(400).json({ error: "Invalid email format" });
     }
 
-    // Store in Supabase
-    const { data, error } = await supabase.from("contact_submissions").insert([
-      {
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        message: message,
-        created_at: new Date().toISOString(),
-      },
-    ]);
+    const { error } = await supabase
+      .from("newsletter_subscriptions")
+      .insert([{ email }]);
 
     if (error) {
       console.error("Supabase error:", error);
-      return res.status(500).json({ error: "Failed to store submission" });
+      return res.status(500).json({ error: "Failed to store subscription" });
     }
 
-    // Send email notification
-    await sendEmail(email, firstName, lastName, message);
+    await sendNotification(email);
 
-    return res.status(200).json({
-      success: true,
-      message: "Form submitted successfully",
-      data,
-    });
+    return res.status(200).json({ success: true });
   } catch (error) {
     console.error("API error:", error);
     return res.status(500).json({ error: "Internal server error" });

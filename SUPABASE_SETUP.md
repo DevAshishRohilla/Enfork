@@ -114,12 +114,20 @@ npm run dev
 
 ## Optional: Enable Email Notifications
 
-To send yourself an email when someone submits a form, use **Resend** (free):
+To send emails when someone submits a form or newsletter signup, use **Resend** (free):
 
+### Setup Resend:
 1. Go to https://resend.com and sign up
-2. Get your API key
-3. Add to Vercel: `RESEND_API_KEY`
-4. Uncomment the email section in `api/contact.ts` and update your email
+2. Verify your domain or use Resend's test domain (`onboarding@resend.dev`)
+3. Get your **API Key** from the dashboard
+
+### Add to Vercel Environment Variables:
+Go to **Settings** → **Environment Variables** and add:
+- `RESEND_API_KEY`: Your API key from Resend
+- `RESEND_FROM_EMAIL`: Your verified sender email (e.g., `Newsletter <noreply@yourdomain.com>` or `Newsletter <onboarding@resend.dev>`)
+- `ADMIN_EMAIL`: Email that receives notifications (e.g., `your.email@example.com`)
+
+**Important:** Without these variables, emails will silently fail to send!
 
 ## For Future: Blog Management
 
