@@ -95,7 +95,7 @@ const Hero = () => {
                   Years <br /> Experience
                 </p>
                 <h3 className="text-2xl sm:text-3xl font-semibold">
-                  10
+                  4
                   <span className="text-sm sm:text-base align-top ml-1">+</span>
                 </h3>
               </div>

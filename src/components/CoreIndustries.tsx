@@ -54,7 +54,7 @@ const industries = [
   {
     title: "Networking",
     description:
-      "Your brand is the story people share about you when you're not in the room.",
+      "Designing secure, scalable networking solutions that ensure seamless connectivity, enhanced performance, and reliable digital infrastructure.",
     image: "./Core industries section/5.webp",
     backContent: {
       title: "Networking",
