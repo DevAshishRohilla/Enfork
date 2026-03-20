@@ -13,7 +13,7 @@ const industries = [
     backContent: {
       title: "Healthcare",
       points: [
-        "EPatient care management solutions",
+        "Patient care management solutions",
         "Healthcare IT and system integration",
         "Compliance and regulatory support",
         "Operational efficiency optimization",
