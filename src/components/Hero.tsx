@@ -72,7 +72,7 @@ const Hero = () => {
             playsInline
             className="w-full h-auto rounded-xl sm:rounded-2xl object-cover"
           >
-            <source src="./videos/EnforkVideo.mp4" type="video/mp4" />
+            <source src="./videos/herovid.mp4" type="video/mp4" />
           </video>
 
           {/* ===== Overlay (Visible only on lg and up) ===== */}

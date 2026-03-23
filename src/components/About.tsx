@@ -49,7 +49,7 @@ const About = () => {
               className="absolute "
             >
               <img
-                src="./logos-1.webp"
+                src="./logo-collage.webp"
                 alt="Enfork Creations"
                 className="object-contain"
               />
