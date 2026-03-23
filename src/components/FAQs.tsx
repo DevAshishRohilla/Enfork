@@ -12,24 +12,24 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: "What is Enfork Group?",
+    question: "Who are we?",
     answer:
-      "Enfork Group is a multi-industry organization housing diverse businesses across technology, marketing, healthcare, education, entertainment, finance, and social care. Each sub-brand operates independently while sharing the same core values of impact, innovation, and excellence.",
+      "We are a multi-industry ecosystem operating across healthcare, media and entertainment, digital marketing, and business networking, creating strategic connections that drive innovation, collaboration, and sustainable business growth.",
   },
   {
-    question: "How do the sub-brands work together?",
+    question: "How does the ecosystem work?",
     answer:
-      "Our sub-brands collaborate through shared expertise, resources, and best practices while maintaining their unique identities. This synergy allows us to deliver comprehensive solutions across multiple sectors.",
+      "Our ecosystem integrates diverse industries into one collaborative network. By combining expertise, resources, and partnerships, we create cross-industry opportunities that accelerate growth, innovation, and long-term value.",
   },
   {
-    question: "What industries does Enfork Group serve?",
+    question: "What Industries Do You Operate In?",
     answer:
-      "We serve a diverse range of industries including technology, healthcare, education, entertainment, finance, marketing, and social care. Each sector benefits from our specialized expertise and innovative approaches.",
+      "We operate in healthcare, media and entertainment, digital marketing, and business networking, delivering specialized solutions while enabling strong inter-industry collaboration.",
   },
   {
-    question: "Are your services available internationally?",
+    question: "How Can You Partner With Us?",
     answer:
-      "Yes, our services are available internationally. We work with clients across multiple countries and regions, adapting our solutions to meet local needs while maintaining global standards of excellence.",
+      "Businesses can engage with us through strategic partnerships, service collaborations, investment opportunities, or networking initiatives designed to foster long-term success and scalable growth.",
   },
 ];
 
