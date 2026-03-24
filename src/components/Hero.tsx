@@ -21,9 +21,7 @@ const Hero = () => {
             className="text-center lg:text-left col-span-1 lg:col-span-2"
           >
             <h2 className="text-foreground mb-4 sm:mb-5 lg:mb-6 leading-[1.3] tracking-wide">
-              Empowering Growth
-              <br />
-              & Creating Value
+              Empowering Growth. Creating Value
             </h2>
 
             <p className=" text-muted-foreground mb-6 sm:mb-8 lg:mb-10 max-w-xl xl:max-w-1xl leading-relaxed mx-auto lg:mx-0">

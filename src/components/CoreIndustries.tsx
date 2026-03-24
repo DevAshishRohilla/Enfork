@@ -8,7 +8,7 @@ const industries = [
   {
     title: "Healthcare",
     description:
-      "Delivering innovative healthcare solutions that improve patient outcomes, streamline operations, and support digital transformation across healthcare organizations.",
+      "Advanced healthcare solutions designed to enhance patient outcomes, optimize operations, and accelerate digital transformation.",
     image: "./Core industries section/7.webp",
     backContent: {
       title: "Healthcare",
@@ -23,7 +23,7 @@ const industries = [
   {
     title: "Digital Marketing",
     description:
-      "Providing data-driven digital marketing strategies that increase brand visibility, generate leads, and deliver measurable business growth.",
+      "Data-driven strategies that strengthen brand visibility, generate qualified leads, and deliver measurable results.",
     image: "./Core industries section/3.webp",
 
     backContent: {
@@ -39,7 +39,7 @@ const industries = [
   {
     title: "Media & Entertainment",
     description:
-      "Empowering media brands with creative strategy, production expertise, and digital solutions to enhance engagement and drive growth.",
+      "Strategic creativity and digital innovation to elevate audience engagement and drive sustainable growth.",
     image: "./Core industries section/2.webp",
     backContent: {
       title: "Media & Entertainment",
@@ -54,7 +54,7 @@ const industries = [
   {
     title: "Networking",
     description:
-      "Designing secure, scalable networking solutions that ensure seamless connectivity, enhanced performance, and reliable digital infrastructure.",
+      "Secure and scalable infrastructure enabling seamless connectivity, high performance, and long-term reliability.",
     image: "./Core industries section/5.webp",
     backContent: {
       title: "Networking",
@@ -81,7 +81,7 @@ const CoreIndustries = () => {
           className="text-center mb-12 sm:mb-16"
         >
           <h1 className=" text-foreground mb-4">Core Industries</h1>
-          <p className="text-p text-muted-foreground max-w-2xl mx-auto"> Delivering excellence across multiple sectors with innovative solutions tailored to your needs</p>
+          <p className="text-p text-muted-foreground max-w-2xl mx-auto"> Delivering Excellence Across Industries Through Tailored, Innovative Solutions</p>
         </motion.div>
 
         {/* ===== Industry Cards Grid ===== */}
