@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { supabase } from "@/lib/supabase";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -11,32 +10,18 @@ const Footer = () => {
 
     setStatus("submitting");
     try {
-      if (import.meta.env.DEV) {
-        const { error } = await supabase
-          .from("newsletter_subscriptions")
-          .insert([{ email }]);
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
 
-        if (error) {
-          console.error("Supabase error:", error);
-          setStatus("error");
-        } else {
-          setStatus("success");
-          setEmail("");
-        }
+      if (response.ok) {
+        setStatus("success");
+        setEmail("");
       } else {
-        const response = await fetch("/api/newsletter", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email }),
-        });
-
-        if (response.ok) {
-          setStatus("success");
-          setEmail("");
-        } else {
-          console.error("Newsletter error:", await response.json());
-          setStatus("error");
-        }
+        console.error("Newsletter error:", await response.json());
+        setStatus("error");
       }
     } catch (err) {
       console.error("Newsletter subscription error:", err);

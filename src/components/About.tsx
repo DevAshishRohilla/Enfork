@@ -29,7 +29,8 @@ const About = () => {
           </div>
 
           <p className="text-foreground leading-relaxed max-w-lg  lg:max-w-2xl mt-4 sm:mt-5 lg:mt-6">
-            Enfork Group, proudly based in Australia, exists to create meaningful change through innovation in technology, marketing, finance, and social development. We empower businesses, communities, and individuals to unlock potential and build a future of opportunity and accessibility for all.
+            Enfork Group, based in Australia, is committed to driving meaningful change through innovation across technology, marketing, finance, and social development. We work to empower businesses, communities, and individuals by unlocking their full potential and enabling a future defined by opportunity, accessibility, and sustainable growth.
+
           </p>
         </motion.div>
 

@@ -12,7 +12,6 @@ import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { supabase } from "@/lib/supabase";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -38,59 +37,30 @@ const Contact = () => {
     setSubmitStatus("idle");
 
     try {
-      // Validate input
       if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
         setSubmitStatus("error");
         setIsSubmitting(false);
         return;
       }
 
-      // Use Supabase directly for development, API route for production
-      const isDevelopment = import.meta.env.DEV;
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
 
-      if (isDevelopment) {
-        // Development: Insert directly to Supabase
-        const { error } = await supabase
-          .from("contact_submissions")
-          .insert([
-            {
-              first_name: formData.firstName,
-              last_name: formData.lastName,
-              email: formData.email,
-              message: formData.message,
-            },
-          ]);
-
-        if (error) {
-          console.error("Supabase error:", error);
-          setSubmitStatus("error");
-        } else {
-          setSubmitStatus("success");
-          setFormData({ firstName: "", lastName: "", email: "", message: "" });
-        }
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({ firstName: "", lastName: "", email: "", message: "" });
       } else {
-        // Production: Use Vercel API route
-        const response = await fetch("/api/contact", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            email: formData.email,
-            message: formData.message,
-          }),
-        });
-
-        if (response.ok) {
-          setSubmitStatus("success");
-          setFormData({ firstName: "", lastName: "", email: "", message: "" });
-        } else {
-          const errorData = await response.json();
-          console.error("Form submission error:", errorData);
-          setSubmitStatus("error");
-        }
+        const errorData = await response.json();
+        console.error("Form submission error:", errorData);
+        setSubmitStatus("error");
       }
     } catch (error) {
       setSubmitStatus("error");
