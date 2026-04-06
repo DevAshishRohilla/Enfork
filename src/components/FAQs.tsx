@@ -177,13 +177,13 @@ export const FAQ: React.FC = () => {
           </div>
             {/* ===== Left Content ===== */}
             <div className=" relative z-10 w-full md:w-2/3 text-foreground">
-              <h3 className="text-h3">We're ready to talk opportunities</h3>
+              <h3 className="text-h3">Driving Growth Through Strategic Collaboration</h3>
               <p className="text-xs sm:text-sm md:text-base max-w-[800px] leading-relaxed mt-2 mb-4">
-                Book a free consultation and discover how our brands can help you grow, innovate, and succeed. No obligations, just expert guidance.
+                Engage with our leadership team to explore partnership opportunities across our diversified industry ecosystem/network.
               </p>
 
               <Link to="/contact-us">
-                <AppButton label="Get a Free Strategy Call" isBlack={true} />
+                <AppButton label="Request a Strategy Call" isBlack={true} />
               </Link>
             </div>
 
