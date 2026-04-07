@@ -33,10 +33,10 @@ const OurVentures = () => {
               className="relative   lg:col-span-2 bg-[#0e0e0e]/90 rounded-2xl p-6 md:p-8 lg:p-12 border border-white/50 text-white shadow-lg backdrop-blur-sm py-12 md:py-16 bg-center bg-no-repeat 2xl:bg-[length:110%]"
             >
               {/* Background Pattern Overlay */}
-              <div
+              {/* <div
                 className="absolute inset-0 opacity-10 bg-[url('/logos.png')] bg-cover bg-center rounded-2xl "
                 aria-hidden="true"
-              ></div>
+              ></div> */}
 
               {/* Content */}
               <div className="relative z-10 xl:mt-16">
@@ -123,7 +123,7 @@ const OurVentures = () => {
               className="relative lg:col-span-2 rounded-2xl p-6 md:p-8 lg:p-12 border border-white/50 text-foreground shadow-lg backdrop-blur-sm py-12 md:py-16 bg-center lg:order-2 order-1 lg:bg-[length:110%]"
             >
               <div
-                className="absolute inset-0 opacity-10 bg-[url('/logos.png')] bg-cover bg-center rounded-2xl"
+                className="absolute inset-0 opacity-10 bg-[url('/brand-icons-bg.png')] bg-cover bg-center rounded-2xl"
                 aria-hidden="true"
               ></div>
 
@@ -153,7 +153,7 @@ const OurVentures = () => {
             <div className="relative lg:col-span-2 bg-[#0e0e0e]/90 rounded-2xl p-6 md:p-8 lg:p-12 border border-white/50 text-white shadow-lg backdrop-blur-sm py-12 md:py-16">
               {/* Background Pattern Overlay */}
               <div
-                className="absolute inset-0 opacity-10 bg-[url('/logos.png')] bg-cover bg-center rounded-2xl"
+                className="absolute inset-0 opacity-10 bg-[url('/brand-icons-bg.png')] bg-cover bg-center rounded-2xl"
                 aria-hidden="true"
               ></div>
 

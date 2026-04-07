@@ -86,7 +86,7 @@ const Testimonials = () => {
 
                 <h6 className=" mb-2 ">{testimonial.title}</h6>
                 <p className="text-sm md:text-base font-light leading-relaxed mb-4 text-foreground/90">
-                  {testimonial.content}
+                  {testimonial.review}
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
@@ -94,7 +94,7 @@ const Testimonials = () => {
                     <span className="text-foreground font-semibold text-sm md:text-base">
                       {testimonial.rating}
                     </span>
-                    {[...Array(testimonial.stars)].map((_, i) => (
+                    {[...Array(testimonial.rating)].map((_, i) => (
                       <Star
                         key={i}
                         className="w-3.5 h-3.5 md:w-4 md:h-4 fill-yellow-400"
@@ -102,7 +102,7 @@ const Testimonials = () => {
                     ))}
                   </div>
                   <p className="text-muted-foreground text-xs md:text-sm italic">
-                    – {testimonial.company}
+                    – {testimonial.title}
                   </p>
                 </div>
               </motion.div>
