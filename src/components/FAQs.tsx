@@ -22,12 +22,12 @@ const faqData: FAQItem[] = [
       "Our ecosystem integrates diverse industries into one collaborative network. By combining expertise, resources, and partnerships, we create cross-industry opportunities that accelerate growth, innovation, and long-term value.",
   },
   {
-    question: "What Industries Do You Operate In?",
+    question: "What industries do you operate in?",
     answer:
       "We operate in healthcare, media and entertainment, digital marketing, and business networking, delivering specialized solutions while enabling strong inter-industry collaboration.",
   },
   {
-    question: "How Can You Partner With Us?",
+    question: "How can you partner with us?",
     answer:
       "Businesses can engage with us through strategic partnerships, service collaborations, investment opportunities, or networking initiatives designed to foster long-term success and scalable growth.",
   },
@@ -177,9 +177,9 @@ export const FAQ: React.FC = () => {
           </div>
             {/* ===== Left Content ===== */}
             <div className=" relative z-10 w-full md:w-2/3 text-foreground">
-              <h3 className="text-h3">Driving Growth Through Strategic Collaboration</h3>
+              <h3 className="text-h3">Let’s Build Something That Performs.</h3>
               <p className="text-xs sm:text-sm md:text-base max-w-[800px] leading-relaxed mt-2 mb-4">
-                Engage with our leadership team to explore partnership opportunities across our diversified industry ecosystem/network.
+                Partner with Enfork Group to create marketing strategies built for measurable growth and real results.
               </p>
 
               <Link to="/contact-us">
@@ -190,7 +190,7 @@ export const FAQ: React.FC = () => {
             {/* ===== Right Side: Man Image ===== */}
             <div className="hidden md:block relative w-full md:w-1/3 flex justify-center md:justify-end -mt-16 md:mt-0 h-[180px] sm:h-[220px]  md:h-[300px] lg:h-[20] z-[5]">
               <motion.img
-                src="/CTA image.png"
+                src="/faq.webp"
                 alt="Man making call gesture"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}

@@ -81,7 +81,7 @@ const CoreIndustries = () => {
           className="text-center mb-12 sm:mb-16"
         >
           <h1 className=" text-foreground mb-4">Core Industries</h1>
-          <p className="text-p text-muted-foreground max-w-2xl mx-auto"> Delivering Excellence Across Industries Through Tailored, Innovative Solutions</p>
+          <p className="text-p text-muted-foreground max-w-3xl mx-auto"> Delivering Excellence Across Industries Through Tailored, Innovative Solutions</p>
         </motion.div>
 
         {/* ===== Industry Cards Grid ===== */}
