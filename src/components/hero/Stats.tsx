@@ -14,7 +14,7 @@ function Stats() {
             Experience
           </p>
           <h3 className="text-3xl md:text-5xl text-white/50  font-semibold">
-            4<span className="text-lg align-top">+</span>
+            5<span className="text-lg align-top">+</span>
           </h3>
         </div>
 
